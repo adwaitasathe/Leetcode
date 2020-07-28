@@ -1,0 +1,9 @@
+/* Write your T-SQL query statement below */
+
+Select ISNULL(
+        (select distinct Salary  
+          from Employee
+          order by Salary desc
+          offset 1 rows 
+          fetch next 1 rows only )
+      ,NULL) as 'SecondHighestSalary'
